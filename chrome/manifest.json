@@ -1,0 +1,42 @@
+{
+  "name": "Coconvertor",
+  "version": "3.4.0",
+  "manifest_version": 3,
+  "icons": {
+    "128": "Coconvertor.png"
+  },
+  "action": {
+    "default_title": "Coconvertor",
+    "default_popup": "./login.html"
+  },
+
+  "background": {
+    "service_worker": "./scripts/events.js"
+  },
+
+  "content_scripts": [
+    {
+      "matches": [
+        "https://app.cocos.capital/*",
+        "http://127.0.0.1:5500/*"
+      ],
+      "js": ["./scripts/jquery-3.6.0.min.js", "./scripts/content.js","./scripts/chart.umd.min.js"]
+    }
+  ],
+
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "tabs",
+    "storage"
+  ],
+
+  "web_accessible_resources": [
+    {
+      "resources": ["./login.html",  "./scripts/jquery-3.6.0.min.js","./scripts/chart.umd.min.js","scripts/rates.json"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+
+  "homepage_url": "https://app.clasicwebtools.com/"
+}
